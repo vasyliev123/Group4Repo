@@ -79,6 +79,7 @@ ALTER TABLE `Product-Categories`
 
 --
 -- Indexes for table `Products`
+-- Please add description about the reason of these constraints.
 --
 ALTER TABLE `Products`
   ADD PRIMARY KEY (`product_id`);
