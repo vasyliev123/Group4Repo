@@ -8,7 +8,7 @@ category_name varchar(255),
 category_description varchar(255),
 PRIMARY KEY (category_id)
 );
-
+--sdfsdfsdfsdfsdf
 CREATE TABLE IF NOT EXISTS Product_categories (
 product_id int not null,
 category_id int not null,
