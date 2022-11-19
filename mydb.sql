@@ -8,6 +8,7 @@ category_name varchar(255),
 category_description varchar(255),
 PRIMARY KEY (category_id)
 );
+--Tables descrption
 --sdfsdfsdfsdfsdf
 CREATE TABLE IF NOT EXISTS Product_categories (
 product_id int not null,
@@ -81,3 +82,4 @@ option_value int not null,
 FOREIGN KEY (item_id) REFERENCES  order_products (item_id),
 primary key (item_option_id)
 );
+
