@@ -1,19 +1,19 @@
-CREATE DATABASE IF NOT EXISTS Shop;
+CREATE DATABASE IF NOT EXISTS ECommerce;
 
-USE shop;
+USE ECommerce;
 
-CREATE TABLE IF NOT EXISTS CATEGORIES (
+CREATE TABLE IF NOT EXISTS Categories (
 category_id int auto_increment,
 category_name varchar(255),
 category_description varchar(255),
 PRIMARY KEY (category_id)
 );
---sdfsdfsdfsdfsdf
-CREATE TABLE IF NOT EXISTS Product_categories (
+
+CREATE TABLE IF NOT EXISTS ProductCategories (
 product_id int not null,
 category_id int not null,
-FOREIGN KEY (product_id) REFERENCES  products (product_id),
-FOREIGN KEY (category_id) REFERENCES categories (category_id),
+FOREIGN KEY (product_id) REFERENCES  Products(product_id),
+FOREIGN KEY (category_id) REFERENCES Categories(category_id),
 PRIMARY KEY (product_id)
 );
 
@@ -26,58 +26,58 @@ product_status varchar(255) not null,
 PRIMARY KEY (product_id)
 );
 
-CREATE TABLE IF NOT EXISTS Shopping_cart_items (
+CREATE TABLE IF NOT EXISTS ShoppingCartItems (
 user_id int not null,
 product_id int not null,
-product_options varchar(256),
+product_options varchar(255),
 quantity int,
-FOREIGN KEY (user_id) REFERENCES  users (user_id),
-FOREIGN KEY (product_id) REFERENCES products (product_id),
+FOREIGN KEY (user_id) REFERENCES  Users(user_id),
+FOREIGN KEY (product_id) REFERENCES Products(product_id),
 primary key (product_options)
 );
 
 CREATE TABLE IF NOT EXISTS Users (
 user_id int not null auto_increment,
-user_role varchar(256) not null,
-user_name varchar(256) not null,
-user_email varchar(256) not null,
-user_password varchar(256) not null,
+user_role varchar(255) not null,
+user_name varchar(255) not null,
+user_email varchar(255) not null,
+user_password varchar(255) not null,
 primary key (user_id)
 );
 
 CREATE TABLE IF NOT EXISTS Orders (
 order_id int not null auto_increment,
-user_id int not null REFERENCES users (user_id),
-user_name varchar(256) REFERENCES users (user_name),
-user_email varchar(255) REFERENCES users (user_email),
-FOREIGN KEY (user_id) REFERENCES  users (user_id),
+user_id int not null REFERENCES Users(user_id),
+user_name varchar(255) REFERENCES Users(user_name),
+user_email varchar(255) REFERENCES Users(user_email),
+FOREIGN KEY (user_id) REFERENCES  Users(user_id),
 primary key (order_id)
 );
 
-CREATE TABLE IF NOT EXISTS Order_totals (
+CREATE TABLE IF NOT EXISTS OrderTotals (
 total_id int not null auto_increment,
 order_id int not null,
-total_name varchar(256),
+total_name varchar(255),
 total_amount int not null,
-FOREIGN KEY (order_id) REFERENCES  orders (order_id),
+FOREIGN KEY (order_id) REFERENCES  Orders(order_id),
 primary key (total_id)
 );
 
-CREATE TABLE IF NOT EXISTS Order_products (
+CREATE TABLE IF NOT EXISTS OrderProducts (
 item_id int not null auto_increment,
 order_id int not null,
-item_name varchar(256),
-item_price varchar(256),
+item_name varchar(255),
+item_price varchar(255),
 item_quantity int not null,
-FOREIGN KEY (order_id) REFERENCES  orders (order_id),
+FOREIGN KEY (order_id) REFERENCES  Orders(order_id),
 primary key (item_id)
 );
 
-CREATE TABLE IF NOT EXISTS Order_product_options (
+CREATE TABLE IF NOT EXISTS OrderProductOptions (
 item_option_id int not null auto_increment,
 item_id int not null,
-option_group varchar(256),
+option_group varchar(255),
 option_value int not null,
-FOREIGN KEY (item_id) REFERENCES  order_products (item_id),
+FOREIGN KEY (item_id) REFERENCES  OrderProducts(item_id),
 primary key (item_option_id)
 );
